@@ -1,9 +1,34 @@
 {
-	"benchmark": {
-		"prefix": "benchmark",
+	"benchmark instructions": {
+		"prefix": "benchmark-instructions",
 		"body": [
 			"local benchmark = avatar:getCurrentInstructions() -- START OF BENCHMARK",
 			"${1:host:setActionbar(avatar:getCurrentInstructions()-benchmark-5) -- END OF BENCHMARK}"
 		]
 	},
+	"benchmark time": {
+		"prefix": "benchmark-miliseconds",
+		"body": [
+			"local benchmark = client:getSystemTime() -- START OF BENCHMARK",
+			"${1:host:setActionbar(client:getSystemTime()-benchmark) -- END OF BENCHMARK}"
+		]
+	},
+	"inheritance_fix": {
+      "prefix": "generic",
+      "body": [
+         "---@generic self",
+         "---@param self self",
+         "---@return self",
+         "---@cast self ${1}",
+      ]
+   },
+	"pcall_setup": {
+      "prefix": "pcall",
+      "body": [
+         "local ok, result = pcall(${1})",
+         "if ok then",
+         "\t${2}",
+         "end",
+      ]
+   }
 }
